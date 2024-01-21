@@ -1,0 +1,22 @@
+<!-- view_job_admin.html -->
+
+
+
+{% block content %}
+  <h2>Job Posting Details (Admin Panel)</h2>
+
+  {% if job_posting %}
+    <h3>{{ job_posting[1] }}</h3>
+    <p>Description: {{ job_posting[2] }}</p>
+    <p>Requirements: {{ job_posting[3] }}</p>
+    <p>Salary: {{ job_posting[4] }}</p>
+    <!-- Add more details as needed -->
+
+    <!-- Add a link back to view_jobs_admin -->
+    <a href="{{ url_for('view_job_admin') }}">Back to Job Postings</a>
+    <a href="{{ url_for('job_applications') }}">view Uploaded resumes</a>
+  {% else %}
+    <p>No job posting found.</p>
+  {% endif %}
+
+{% endblock %}

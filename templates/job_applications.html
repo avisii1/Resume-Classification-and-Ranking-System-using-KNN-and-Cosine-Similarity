@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Applications</title>
+</head>
+<body>
+    <h1>Job Applications</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Application ID</th>
+                <th>Job ID</th>
+                <th>Job Title</th>
+                <th>Candidate Name</th>
+                <th>Candidate Email</th>
+                <th>Resume</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for application in job_applications %}
+                <tr>
+                    <td>{{ application['application_id'] }}</td>
+                    <td>{{ application['job_id'] }}</td>
+                    <td>{{ application['job_title'] }}</td>
+                    <td>{{ application['full_name'] }}</td>
+                    <td>{{ application['email'] }}</td>
+                    
+                    <td><a href="{{ url_for('uploaded_file', filename=application['file_path']) }}" target="_blank">View Resume</a></td>
+                    
+
+
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% if jobId %}
+    <!-- Link using the jobId variable passed from the route -->
+        <a href="{{ url_for('classified_resumes', job_id=jobId) }}">Classify Resumes for Job {{ jobId }}</a>
+    {% else %}
+        <p>No job ID available.</p>
+    {% endif %}
+</body>
+</html>

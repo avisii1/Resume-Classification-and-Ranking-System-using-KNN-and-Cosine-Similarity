@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Job Posting</title>
+</head>
+<body>
+    <h1>Create Job Posting</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form method="post" action="{{ url_for('create_job_posting') }}">
+        <label for="title">Job Title:</label>
+        <input type="text" name="title" required><br>
+        <label for="description">Job Description:</label>
+        <textarea name="description" required></textarea><br>
+        <label for="requirements">Job Requirements:</label>
+        <textarea name="requirements" required></textarea><br>
+        <label for="salary">Salary:</label>
+        <input type="text" name="salary" required><br>
+        <button type="submit">Create Job Posting</button>
+    </form>
+</body>
+</html>

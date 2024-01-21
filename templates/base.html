@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Your Website Title</title>
+        <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
+    </head>
+    <body>
+        <div class="container"> 
+            <div class="layout">
+                <header>    
+                    <nav>     
+                        <ul>      
+                            <li><a href="/">Home</a></li>       
+                            <li><a href="#">About</a></li>       
+                            <li><a href="#">Services</a></li>        
+                            <li><a href="{{ url_for('view_jobs') }}">Careers</a></li>        
+                            <li><a href="#">Contact</a></li>  
+                            {% if 'user_id' in session %}     
+                                <li class="right-align"><a href="{{ url_for('logout') }}">Sign Out</a></li>
+                            {% else %}
+                                <li class="right-align"><a href="{{ url_for('login') }}">Sign In/Register</a></li>
+                            {% endif %}
+                            <!-- <li class="right-align"><a href="#">Register</a></li> -->
+                        </ul>
+                    </nav>
+                </header>
+                <main>
+                    {% block content %}{% endblock %}
+                </main>
+            </div>
+            <footer>
+                <p class="footer-text">&copy; 2023 Company, Inc</p>
+                <ul class="footer-nav">
+                    <li><a href="/" class="nav-link">Home</a></li>
+                    <li><a href="#about" class="nav-link">About</a></li>
+                </ul>
+            </footer>
+        </div>
+    </body>
+</html>

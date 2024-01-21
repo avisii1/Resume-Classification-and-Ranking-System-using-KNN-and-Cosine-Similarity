@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="{{ url_for('create_job_posting') }}">Create Job Posting</a></li>
+            <li><a href="{{ url_for('view_job_admin') }}">View jobs</a></li>
+        </ul>
+    </nav>
+    <h1>Welcome to the Admin Panel!</h1>
+    <p>This page is accessible only for admins.</p>
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>

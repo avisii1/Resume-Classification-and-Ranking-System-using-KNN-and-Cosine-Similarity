@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block content %}
+<!-- <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Jobs</title>
+</head>
+<body> -->
+    <h1>View Jobs</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    {% for job_posting in job_postings %}
+        <div>
+            <h3>{{ job_posting[1] }}</h3>
+            <p>{{ job_posting[2] }}</p>
+            <p>Salary: {{ job_posting[4] }}</p>
+            <a href="{{ url_for('view_job', job_id=job_posting[0]) }}">View Job</a>
+        </div>
+        <hr>
+    {% endfor %}
+<!-- </body> -->
+{% endblock %}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply for Job</title>
+</head>
+<body>
+    <h1>Apply for Job</h1>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }}">
+                    {{ message }}
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    <form method="post" action="{{ url_for('apply_job', job_id=job_id) }}" enctype="multipart/form-data">
+        <label for="resume">Upload Resume (PDF only):</label>
+        <input type="file" name="resume" accept=".pdf" required><br>
+        <button type="submit">Apply for Job</button>
+    </form>
+</body>
+</html>
